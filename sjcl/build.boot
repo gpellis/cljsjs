@@ -2,26 +2,18 @@
   :resource-paths #{"resources"}
   :dependencies '[[cljsjs/boot-cljsjs "0.5.2" :scope "test"]])
 
-(require '[boot.task-helpers]
-         '[cljsjs.boot-cljsjs.packaging :refer :all])
-
+(require '[cljsjs.boot-cljsjs.packaging :refer :all])
 
 (def +lib-version+ "1.0.6")
-(def +version+ (str +lib-version+ "-1"))
+(def +version+ (str +lib-version+ "-0"))
 
 (task-options!
-  push {:ensure-clean false}
   pom  {:project     'cljsjs/sjcl
         :version     +version+
         :description "Stanford Javascript Crypto Library"
-        :url         "https://github.com/bitwiseshiftleft/sjcl/blob/master/sjcl.js"
+        :url         "http://bitwiseshiftleft.github.io/sjcl/"
         :license     {"BSD" "https://opensource.org/licenses/BSD-3-Clause"}
         :scm         {:url "https://github.com/cljsjs/packages"}})
-
-(require '[boot.core :as c]
-         '[boot.tmpdir :as tmpd]
-         '[clojure.java.io :as io]
-         '[clojure.string :as string])
 
 (deftask package []
   (comp
